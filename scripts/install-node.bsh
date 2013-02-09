@@ -1,0 +1,75 @@
+﻿#!/bin/bash
+cd ~
+VER=$1
+if [ "$VER" == "" ]; then
+  echo "Enter the version in the form x.x.x"
+  echo -n "(i.e. 0.8.11): "
+  read -e VER
+fi
+
+echo Installing Nodejs Version $VER
+
+INST=`which node`
+if [ "$INST" == "" ]; then
+   echo Nodejs not installed
+   for x in `ls -1 -d node-v$VER`; do
+      if [ -d $x ]; then
+	    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "!!!   It appears you started to install $x                             !!!"
+		echo "!!!   If you would like to continue the installation exit this script  !!!"
+		echo "!!!   Then execute:                                                    !!!"
+		echo "!!!      cd $x                                                         !!!"
+		echo "!!!      make                                                          !!!"
+		echo "!!!      sudo make install                                             !!!"
+		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      fi
+   done
+else
+   echo If you tried to install Nodejs and crashed you may wish to continue your execution instead of reinstalling everything
+   echo To do this choose \"n\" and then manually
+   echo "   cd node-vx.x.x"
+   echo "   sudo make install"
+   echo ""
+   echo "Uninstall existing Node " $INST " required."
+   read -p "Continue [Y/n]: " RESP
+   if [ "$RESP" == "n" ] || [ "$RESP" == "N" ]; then
+     echo exiting install
+     exit 0;
+   fi
+fi
+
+echo Removing the following files:
+ls -1 -d node-v*
+read -p "Continue [Y/n]: " RESP
+if [ "$RESP" == "n" ] || [ "$RESP" == "N" ]; then
+  echo exiting install
+  exit 0;
+fi
+
+WATCH=`cat /etc/watchdog.conf | grep -c -i \#max-load`
+WATCH_LOAD=`cat /etc/watchdog.conf | grep -c -i max-load`
+if [ "$WATCH" != "$WATCH_LOAD" ]; then
+  echo ""
+  echo "   Stopping watchdog: Your watchdog may be configured to reboot on heavy load"
+  echo "   Compiling programs like Nodejs may cause long periods of high CPU usage causing watchdog to reboot"
+  echo "   If your Raspberry Pi keeps shutting down, you can try installing an older version of Nodejs"
+  echo ""
+  sudo /etc/init.d/watchdog stop
+fi
+
+## Delete previous files
+echo rm -R -f node-v*
+
+## Pull Nodejs, unpack and install
+wget http://nodejs.org/dist/v"$VER"/node-v$(VER).tar.gz
+tar -zxf node-v"$VER".tar.gz
+cd node-v"$VER"
+./configure
+make
+sudo make install
+
+WATCH=`ps -aef | grep -v grep | grep -i -c watchdog`
+if [ $WATCH -eq 0 ]; then
+   echo Restarting watchdog
+   sudo /etc/init.d/watchdog start
+fi
