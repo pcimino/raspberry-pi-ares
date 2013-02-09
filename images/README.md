@@ -6,12 +6,12 @@ This project includes a few disk images (all based off of the [2012-12-16 Raspia
 
 There are two scripts on the desktop for rebooting and powering down the RPi.  
 
-The passwords on the accounts for these images:  
+## The passwords on the accounts for these images:  ##
 1. root changeme  
 2. pi changeme  
 3. TightVNC Client password: changeme  
 
-To change the passwords:  
+## To change the passwords: ##
 1. System boots into the default user "pi"  
 2. Open a command shell  
 3. Type: passwd pi  
@@ -25,4 +25,4 @@ To change the passwords:
 10. Follow the prompts  
 
 
-Project Wiki: https://github.com/pcimino/raspberry-pi-ares/wiki
+[Project Wiki](https://github.com/pcimino/raspberry-pi-ares/wiki)
