@@ -6,16 +6,16 @@ Then I wondered if it's powerful enough to be a dedicated [Ares 2](https://githu
 
 # Disk Images #
 This project includes a few disk images (all based off of the [2012-12-16 Raspian Wheezy image](http://www.raspberrypi.org/downloads)):  
-1. Raspian-VNC.img Includes the Watchdog and TightVNC Server
-2. Raspian-Node.img #1 plus Nodejs v0.8.x
-3. Raspian-Ares.img #1 & #2 plus Ares 2 and Nodejs server startup, auto updates
+1. Raspian-VNC.img Includes the Watchdog and TightVNC Server  
+2. Raspian-Node.img #1 plus Nodejs v0.8.11  
+3. Raspian-Ares.img #1 & #2 plus Ares 2 and Nodejs server startup, auto updates  
 
 There are two scripts on the desktop for rebooting and powering down the RPi.  
 
 The passwords on the accounts for these images:  
-1. root changeme
-2. pi changeme
-3. TightVNC Client password: changeme
+1. root changeme  
+2. pi changeme  
+3. TightVNC Client password: changeme  
 
 To change the passwords:  
 1. System boots into the default user "pi"  
@@ -36,15 +36,15 @@ I used the wheezy OS build and followed the [beginner instructions](http://www.r
 First time buooting the RPi puts you into a configuration screen, which can always be re-run later:  
     `sudo raspi-config`
 
-## expand_ ##
+## expand_rootfs ##
 
 This will set up the disk image to expand form 2 Gig to the capacity of the SD Card. I recommend not doing this initially. I had a few false starts and a bad SD Card. I relized the disk image utility could also be used to back up a disk image. And backing up and restoring a 2 Gig disk is not only fster, but I can put it on a 2, 4, 8, 16 ... Gig SD Card.
 
 This allowed me to save multiple images of my work in progress:
-1. Raspberry OS with watchdog
-2. OS with watchdog plus Tight VNC
-3. 1 & 2 plus Nodejs
-4. Etcetera, creating images from the more generic towards the specialized
+1. Raspberry OS with watchdog  
+2. OS with watchdog plus Tight VNC  
+3. 1 & 2 plus Nodejs  
+4. Etcetera, creating images from the more generic towards the specialized  
 
 ## Overclocking ##
 
@@ -71,10 +71,14 @@ Modify the start command to look like:
 `vncserver :1 -geometry 1800x1000 -depth 16 -pixelformat rgb565`
 
 # Nodejs #
-I [followed this tutorial](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=34&t=18775), changed the version to the v0.8.x (tried the v0.9.x builds but trying to make the builds caused constant reboots). Even with overclocking, it may take hours; probably want to kick this off over night, or after you have the headless setup and your VNC'ed in.  
+I [followed this tutorial](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=34&t=18775), changed the version to the v0.8.11 (tried the v0.9.x builds but trying to make the builds caused constant reboots). Even with overclocking, it may take hours; probably want to kick this off over night, or after you have the headless setup and your VNC'ed in.  
   
-If you'd like the script to simplify installing Nodejs, pull it here: 
-wget https://
+If you'd like the script to simplify installing Nodejs, pull it here:  
+`wget https://github.com/pcimino/raspberry-pi-ares/blob/master/scripts/install-node.bsh`  
+`chmod 7ff install-node.bsh`  
+`./install-mod.bsh 0.8.11`  
+I tried higher revisions of Nodejs without much luck.  
+
 # Git #
 Installing Git is much quicker:  
 `sudo apt-get install git-core`  
