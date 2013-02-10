@@ -61,12 +61,12 @@ fi
 echo rm -R -f node-v*
 
 ## Pull Nodejs, unpack and install
-wget http://nodejs.org/dist/v"$VER"/node-v$(VER).tar.gz
+wget http://nodejs.org/dist/v"$VER"/node-v"$VER".tar.gz
 tar -zxf node-v"$VER".tar.gz
 cd node-v"$VER"
 ./configure
-make
-sudo make install
+/usr/bin/nice -10 make
+sudo /usr/bin/nice -10 make install
 
 WATCH=`ps -aef | grep -v grep | grep -i -c watchdog`
 if [ $WATCH -eq 0 ]; then
