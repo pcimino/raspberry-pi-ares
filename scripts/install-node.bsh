@@ -1,6 +1,9 @@
 ﻿#!/bin/bash
+
 cd ~
+
 VER=$1
+
 if [ "$VER" == "" ]; then
   echo "Enter the version in the form x.x.x"
   echo -n "(i.e. 0.8.11): "

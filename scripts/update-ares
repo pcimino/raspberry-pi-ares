@@ -1,0 +1,12 @@
+# Run this script locally
+# From the cron tab use something like this (runs daily at 2 AM as user 'pi'):
+# * 2  * * *  sh /usr/home/pi/scripts/update-ares
+# Update the user's cron file
+# crontab -e
+
+export ARES_HOME=/usr/home/pi/ares-project
+cd $ARES_HOME
+# Single '>' overwites an existing log so they don't get too big
+git pull > ~/git-pull-log
+# Double '>' (>>) writes tot he end of the file so it doesn't get overtritten
+echo "Ares updated @" date >> /usr/home/pi/git-pull-log
