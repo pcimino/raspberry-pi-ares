@@ -1,0 +1,37 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          nodejs running ares
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start/stop ares-server
+### END INIT INFO
+
+# More details see: 
+# https://github.com/pcimino/raspberry-pi-ares
+
+### Customize this entry
+# Set the USER variable to the name of the user to start ares-server under
+export USER='pi'
+# Set the ARES_HOME variable to the path to the ares-project directory
+export ARES_HOME=/usr/home/pi/ares-project
+### End customization required
+
+eval cd ~$USER
+
+case "$1" in
+  start)
+    su $USER -c 'cd $ARES_HOME ; forever start ide.js'
+    echo "Starting Ares server for $USER "
+    ;;
+  stop)
+    su $USER -c 'cd $ARES_HOME ; forever stop ide.js'
+    echo "Ares server stopped"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/ares-server {start|stop}"
+    exit 1
+    ;;
+esac
+exit 0
