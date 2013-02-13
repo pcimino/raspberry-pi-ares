@@ -8,5 +8,10 @@ This repository details the steps I took to create my server setup. [You can sta
 
 The [Disk Images](https://github.com/pcimino/raspberry-pi-ares/tree/master/images) provide you with installable images to help you setup your Raspberry Pi (RPi).
 
+## Follow Up ##
+Disappointing... the RPi's 512 MB isn't enough to load Ares. However this whole tutorial isn't a waste. You can follow the steps and use a Debian Linux computer.   
+
+Also, I did get the RPi to run as a VNC server and Node server for a simple site on a 2 Gig SD Card. So I'll leave this repository up, could prove useful to anyone trying something similar.
+
 
 
