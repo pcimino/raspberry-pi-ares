@@ -15,14 +15,14 @@
 # Set the USER variable to the name of the user to start ares-server under
 export USER='pi'
 # Set the ARES_HOME variable to the path to the ares-project directory
-export ARES_HOME=/usr/home/pi/ares-project
+export ARES_HOME=/home/pi/ares-project
 ### End customization required
 
 eval cd ~$USER
 
 case "$1" in
   start)
-    su $USER -c 'cd $ARES_HOME ; forever start ide.js'
+    su $USER -c 'cd $ARES_HOME ; forever start ide.js -a'
     echo "Starting Ares server for $USER "
     ;;
   stop)
