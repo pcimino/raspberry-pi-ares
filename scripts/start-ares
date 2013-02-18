@@ -1,2 +1,2 @@
 cd ~\ares-project
-node ide.js -h > ares.log
+node ide.js -a > ares.log
