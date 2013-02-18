@@ -1,8 +1,7 @@
 # Disk Images #
 This project includes a few disk images (all based off of the [2012-12-16 Raspian Wheezy image](http://www.raspberrypi.org/downloads):  
 1. Wheezy-VNC.img Includes Git, Watchdog and TightVNC Server  
-2. Wheezy-Node.img #1 plus Nodejs v0.8.11  
-3. Wheezy-Ares.img #1 & #2 plus Ares 2 and Nodejs server startup, auto updates  
+2. Wheezy-Node.img #1 plus Nodejs v0.8.19   
 
 There are two scripts on the desktop for rebooting and powering down the RPi.  
 
