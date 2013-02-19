@@ -10,5 +10,5 @@ cd $ARES_HOME
 git pull > ~/git-pull.log
 
 # Double '>' (>>) writes tot he end of the file so it doesn't get overtritten
-git pull --recurse-submodules >> ~/git-pull.log
+git submodule update --init --recursive >> ~/git-pull.log
 echo "Ares updated @" date >> ~/git-pull.log
