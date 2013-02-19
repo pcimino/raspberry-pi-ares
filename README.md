@@ -2,7 +2,7 @@
 
 **Note**: You could use this tutorial for any Debian Linux setup to do the same thing. And the disk images are a useful shortcut if you want to start with a new Raspberry Pi image and setup VNC or Node.  
 
-I ordered a [Raspberry Pi](http://www.raspberrypi.org/) from the first supplier in England back in February 2012. It was on back order for months and in April I was finally informed they were arriving *soon*. In June I received an email stating 8 weeks shipping, my order was FINALLY being processed. Apparently my order got misplaced, because in September I contacted the company and they admitted nothing, simply stated it was being processed. By the time the RPi (Raspberry Pi) arrrived, I kind of forgot why I ordered it in the first place. So I threw it in a drawer for later, thinking I might set up a media server or something.  
+If you want to know [the WHY behind this project](http://pcimino.blog.com/?p=55)...
 
 Then I wondered if it's powerful enough to be a dedicated [Ares 2](https://github.com/enyojs/ares-project) server. Ares is an open source, web based Enyo UI  tool, allowing you to drag and drop widgets, wire up events and actions, [here's a demo](https://www.youtube.com/watch?feature=player_embedded&v=qQkzUDtiC-I).
 
