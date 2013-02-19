@@ -1,0 +1,13 @@
+# Use this file for your crontab
+# Simply call crontab with this file as the argument
+# > cd ~
+# > crontab scripts/mycrontab
+#
+# Verify the setup by listing the crontab file:
+# > crontab -l
+#
+# PUll updates for the Ares project every night at 2 am
+0 2 * * * sh /home/pi/scripts/update-ares
+#
+# Pull firmware and reboot Sunday 3 AM
+0 3 * * 0  sh /home/pi/scripts/update-firmware

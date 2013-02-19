@@ -1,0 +1,13 @@
+# Run this script locally
+# From the cron tab use something like this (runs weekly at 3 AM Sunday as user 'root'):
+# 0 3 * * 0  sh /home/pi/scripts/update-firmware
+# Update the user's cron file
+# crontab -e
+
+# Single '>' overwites an existing log so they don't get too big
+sudo apt-get update > ~/firmware.log
+
+# Double '>' (>>) writes tot he end of the file so it doesn't get overtritten
+sudo apt-get update >> ~/firmware.log
+echo "Firmware updated @" date >> ~/firmware.log
+sudo shutdown -r now >> ~/firmware.log
