@@ -5,14 +5,14 @@
 # Required-Stop:     $local_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: start/stop ares-server
+# Short-Description: start/stop ares-node-server
 ### END INIT INFO
 
 # More details see: 
 # https://github.com/pcimino/raspberry-pi-ares
 
 ### Customize this entry
-# Set the USER variable to the name of the user to start ares-server under
+# Set the USER variable to the name of the user to start ares-node-server under
 export USER='pi'
 # Set the ARES_HOME variable to the path to the ares-project directory
 export ARES_HOME=/home/pi/ares-project
@@ -30,7 +30,7 @@ case "$1" in
     echo "Ares server stopped"
     ;;
   *)
-    echo "Usage: /etc/init.d/ares-server {start|stop}"
+    echo "Usage: /etc/init.d/ares-node-server {start|stop}"
     exit 1
     ;;
 esac

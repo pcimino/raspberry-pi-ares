@@ -1,0 +1,14 @@
+# Run this script locally
+# From the cron tab use something like this (runs daily at 2:30 AM as user 'pi'):
+# 30 2  * * *  sh /home/pi/scripts/update-mvc
+# Update the user's cron file
+# crontab -e
+
+export MVC_HOME=/home/pi/bootplate-mvc
+cd $MVC_HOME
+# Single '>' overwites an existing log so they don't get too big
+git pull > ~/git-pull-mvc.log
+
+# Double '>' (>>) writes tot he end of the file so it doesn't get overtritten
+git submodule update --init --recursive >> ~/git-pull-mvc.log
+echo "Ares updated @" date >> ~/git-pull-mvc.log

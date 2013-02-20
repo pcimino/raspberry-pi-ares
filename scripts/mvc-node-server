@@ -1,0 +1,37 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          nodejs running mvc
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start/stop mvc-server
+### END INIT INFO
+
+# More details see: 
+# https://github.com/pcimino/raspberry-pi-ares
+
+### Customize this entry
+# Set the USER variable to the name of the user to start mvc-server under
+export USER='pi'
+# Set the MVC_HOME variable to the path to the bootplate-mvc directory
+export MVC_HOME=/home/pi/bootplate-mvc
+### End customization required
+
+eval cd ~$USER
+
+case "$1" in
+  start)
+    su $USER -c 'cd $MVC_HOME ; http-server'
+    echo "Starting MVC server for $USER "
+    ;;
+  stop)
+    su $USER -c 'kill -9 `ps -aef | grep http-server | grep -v grep | cut -b5-15`'
+    echo "MVC server stopped"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/mvc-node-server {start|stop}"
+    exit 1
+    ;;
+esac
+exit 0
