@@ -1,2 +1,2 @@
-cd ~\bootplate-mvc
+cd ~/bootplate-mvc
 http-server > mvc.log

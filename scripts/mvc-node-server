@@ -14,15 +14,15 @@
 ### Customize this entry
 # Set the USER variable to the name of the user to start mvc-server under
 export USER='pi'
-# Set the MVC_HOME variable to the path to the bootplate-mvc directory
-export MVC_HOME=/home/pi/bootplate-mvc
+# Set the MVC_HOME variable to script to launch the http-server in the correct directory
+export MVC_HOME=/home/pi/scripts/start-mvc
 ### End customization required
 
 eval cd ~$USER
 
 case "$1" in
   start)
-    su $USER -c 'cd $MVC_HOME ; http-server'
+    su $USER -c '$MVC_HOME &'
     echo "Starting MVC server for $USER "
     ;;
   stop)
