@@ -1,2 +1,2 @@
 cd ~/bootplate-mvc
-http-server > mvc.log
+nohup http-server -p 8080 > mvc.log
