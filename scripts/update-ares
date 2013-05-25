@@ -7,8 +7,14 @@
 export ARES_HOME=/home/pi/ares-project
 cd $ARES_HOME
 # Single '>' overwites an existing log so they don't get too big
-git pull > ~/git-pull.log
+git fetch origin > ~/git-pull.log
 
 # Double '>' (>>) writes tot he end of the file so it doesn't get overtritten
+git submodule foreach git fetch origin >> ~/git-pull.log
+git merge origin/master >> ~/git-pull.log
 git submodule update --init --recursive >> ~/git-pull.log
+
+# Update the NPM modules
+npm -d install >> ~/git-pull.log
 echo "Ares updated @" date >> ~/git-pull.log
+
